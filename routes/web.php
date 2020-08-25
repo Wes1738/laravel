@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contato', function () {
+    return view('contact');
+});
+
+// Como chamar Uma rota de um arquivo que está dentro de uma pasta/diretório
+Route::get('/sobre', function () {
+    return view('site.about');
+});
