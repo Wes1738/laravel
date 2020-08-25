@@ -34,3 +34,15 @@ Route::get('/categoria/{slug}/posts', function ($slug) {
 Route::get('/produtos/{idProduct?}', function ($idProduct = '') {
     return "Produto(s) {$idProduct}";
 });
+// Redirect
+// Route::get('redirect1', function () {
+//     return redirect('/redirect2');
+// });
+//-----------OU Simplesmente------------
+Route::redirect('/redirect1', 'redirect2');
+Route::get('redirect2', function () {
+    return "Redirect 02";
+});
+
+// Views (Exemplo clássico já visto anteriormente)
+Route::view('/view', 'welcome');
