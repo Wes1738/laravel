@@ -46,3 +46,12 @@ Route::get('redirect2', function () {
 
 // Views (Exemplo clássico já visto anteriormente)
 Route::view('/view', 'welcome');
+
+// Rotas Nomeadas
+Route::get('name-url', function () {
+    return "Hey Hey Hey";
+})->name('url.name');
+
+Route::get('redirect3', function () {
+    return redirect()->route('url.name');
+});
