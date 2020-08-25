@@ -10,6 +10,11 @@ Route::get('/contato', function () {
     return view('contact');
 });
 
+// Login
+Route::get('/login', function () {
+    return "Página de Login";
+})->name('login');
+
 // Como chamar Uma rota de um arquivo que está dentro de uma pasta/diretório
 Route::get('/sobre', function () {
     return view('site.about');
@@ -55,3 +60,27 @@ Route::get('name-url', function () {
 Route::get('redirect3', function () {
     return redirect()->route('url.name');
 });
+
+// Grupo de Rotas
+// middleware -> Autenticação
+Route::middleware(['auth'])->group( function () {
+
+    // Prefix -> Padroniza um prefixo na rota
+    Route::prefix('admin')->group( function () {
+
+        Route::get('/dashboard', function () {
+            return 'Home Admin';
+        });
+        
+        Route::get('/financeiro', function () {
+            return 'Fianceiro da empresa';
+        });
+        
+        Route::get('/produtos', function () {
+            return 'Gerenciar os Produtos';
+        });
+
+    });
+
+});
+
