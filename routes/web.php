@@ -12,7 +12,7 @@ Route::get('/contato', function () {
 
 // Chamando o Controller ProductController com o método/ação index
 // ---------------------- CRUD com Laravel -------------------------------------------
-
+/*
 // Criando um Produto
 Route::get('/products/create', 'ProductController@create')->name('products.create');
 // Editar um Produto específico
@@ -27,6 +27,9 @@ Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 Route::post('/store', 'ProductController@store')->name('products.store');
 // Deletar um Produto
 Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
+*/
+// ------------------------------ OU SIMPLESMENTE ----------------------------------------
+Route::resource('products', 'ProductController');
 
 // Login
 Route::get('/login', function () {
