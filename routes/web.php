@@ -10,11 +10,15 @@ Route::get('/contato', function () {
     return view('contact');
 });
 
+// Chamando o Controller ProductController com o método/ação index
+Route::get('/products', 'ProductController@index')->name('products.index');
+
 // Login
 Route::get('/login', function () {
     return "Página de Login";
 })->name('login');
 
+/*
 // Como chamar Uma rota de um arquivo que está dentro de uma pasta/diretório
 Route::get('/sobre', function () {
     return view('site.about');
@@ -88,7 +92,7 @@ Route::get('redirect3', function () {
         
     });
 
-});*/
+});
 // --------------------------------------OU----------------------------------------------
 Route::group([
     'middleware' => [],
@@ -106,4 +110,5 @@ Route::group([
         return redirect()->route('admin.dashboard');
     })->name('home');;
 });
+*/
 
