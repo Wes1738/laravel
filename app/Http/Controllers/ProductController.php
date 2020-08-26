@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $request, $user;
+
+    public function __construct(Request $request)
+    {
+        dd($request->prm1);
+        $this->request = $request;
+    }
+
     public function index()
     {
         $products = ['camiseta Nike', 'Tênis Adidas', 'Meia Lupo'];
