@@ -63,24 +63,47 @@ Route::get('redirect3', function () {
 
 // Grupo de Rotas
 // middleware -> Autenticação
-Route::middleware(['auth'])->group( function () {
+/*Route::middleware(['auth'])->group( function () {
 
     // Prefix -> Padroniza um prefixo na rota
     Route::prefix('admin')->group( function () {
 
-        Route::get('/dashboard', function () {
-            return 'Home Admin';
-        });
-        
-        Route::get('/financeiro', function () {
-            return 'Fianceiro da empresa';
-        });
-        
-        Route::get('/produtos', function () {
-            return 'Gerenciar os Produtos';
-        });
+        // Namespace
+        Route::namespace('Admin')->group( function () {
 
+            // Name -> Padronizar o name das rotas
+            Route::name('admin.')->group(function () {
+                Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
+            
+                Route::get('/financeiro', 'TesteController@teste')->name('financeiro');;
+                
+                Route::get('/produtos', 'TesteController@produto')->name('products');;
+
+                Route::get('/', function () {
+                    return redirect()->route('admin.dashboard');
+                })->name('home');;
+            });
+
+        });
+        
     });
 
+});*/
+// --------------------------------------OU----------------------------------------------
+Route::group([
+    'middleware' => [],
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    // Esse não funciona ----->>> 'name' => 'admin.'
+], function () {
+    Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
+            
+    Route::get('/financeiro', 'TesteController@teste')->name('financeiro');;
+    
+    Route::get('/produtos', 'TesteController@produto')->name('products');;
+
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    })->name('home');;
 });
 
