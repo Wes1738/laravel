@@ -12,6 +12,7 @@ Route::get('/contato', function () {
 
 // Chamando o Controller ProductController com o método/ação index
 Route::get('/products', 'ProductController@index')->name('products.index');
+Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 
 // Login
 Route::get('/login', function () {
