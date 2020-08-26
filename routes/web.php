@@ -11,8 +11,22 @@ Route::get('/contato', function () {
 });
 
 // Chamando o Controller ProductController com o método/ação index
+// ---------------------- CRUD com Laravel -------------------------------------------
+
+// Criando um Produto
+Route::get('/products/create', 'ProductController@create')->name('products.create');
+// Editar um Produto específico
+Route::put('/products/{id}', 'ProductController@update')->name('products.update');
+// Form de edição de um Produto
+Route::get('/products/{id}/edit', 'ProductController@edit')->name('products.edit');
+// Listando todos os Produtos
 Route::get('/products', 'ProductController@index')->name('products.index');
+// Exibindo um Produto específico
 Route::get('/products/{id}', 'ProductController@show')->name('products.show');
+// Cadastrando um novo Produto
+Route::post('/store', 'ProductController@store')->name('products.store');
+// Deletar um Produto
+Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
 
 // Login
 Route::get('/login', function () {
