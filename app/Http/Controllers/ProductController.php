@@ -22,9 +22,11 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = ['camiseta Nike', 'Tênis Adidas', 'Meia Lupo'];
+        $teste = '08081508';
 
-        return $products;
+        // return view('teste', ['teste' => $teste]);
+        // ------------- OU -------------------------
+        return view('teste', compact('teste'));
     }
 
     public function show($id)
