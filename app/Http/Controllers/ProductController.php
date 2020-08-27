@@ -10,8 +10,14 @@ class ProductController extends Controller
 
     public function __construct(Request $request)
     {
-        dd($request->prm1);
+        // dd($request->prm1);
         $this->request = $request;
+
+        // $this->middleware('auth');
+        // Estou bloqueando o acesso a essas rotas abaixo
+        // $this->middleware('auth')->only(['create', 'store']);
+        // Aplica o middleware em todos EXCETO no index
+        $this->middleware('auth')->except('index');
     }
 
     public function index()
