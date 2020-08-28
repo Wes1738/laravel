@@ -17,7 +17,7 @@ class ProductController extends Controller
         // Estou bloqueando o acesso a essas rotas abaixo
         // $this->middleware('auth')->only(['create', 'store']);
         // Aplica o middleware em todos EXCETO no index
-        $this->middleware('auth')->except('index');
+        // $this->middleware('auth')->except('index');
     }
 
     public function index()
@@ -39,7 +39,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return 'Exibindo o form de cadastro de um novo produto';
+        return view('admin.pages.products.create');
     }
 
     public function edit($id)
@@ -49,7 +49,7 @@ class ProductController extends Controller
 
     public function store()
     {
-        return 'Cadastrando um novo produto';
+        dd('Cadastrando...');
     }
 
     public function update($id)
