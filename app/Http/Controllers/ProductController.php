@@ -24,10 +24,12 @@ class ProductController extends Controller
     {
         $teste = 123;
         $teste2 = 321;
+        $teste3 = [1,2,3,4,5];
+        $products = ['Tv', 'Geladeira', 'Forno', 'Sofá'];
 
         // return view('teste', ['teste' => $teste]);
         // ------------- OU -------------------------
-        return view('admin.pages.products.index', compact('teste', 'teste2'));
+        return view('admin.pages.products.index', compact('teste', 'teste2', 'teste3', 'products'));
     }
 
     public function show($id)
