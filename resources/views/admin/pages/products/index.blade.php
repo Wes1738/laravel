@@ -96,8 +96,14 @@
 
 @endsection
 
-{{-- @push('styles') --}}
+@push('styles')
     <style>
         .last {background: #CCC;}
     </style>
-{{-- @endpush --}}
+@endpush
+
+@push('scripts')
+    <script>
+        document.body.style.background = '#efefef'
+    </script>
+@endpush 
