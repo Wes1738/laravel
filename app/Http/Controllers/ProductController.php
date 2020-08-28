@@ -22,11 +22,12 @@ class ProductController extends Controller
 
     public function index()
     {
-        $teste = '<h1>Olá Mundo</h1>';
+        $teste = 123;
+        $teste2 = 321;
 
         // return view('teste', ['teste' => $teste]);
         // ------------- OU -------------------------
-        return view('admin.pages.products.index', compact('teste'));
+        return view('admin.pages.products.index', compact('teste', 'teste2'));
     }
 
     public function show($id)
