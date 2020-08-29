@@ -47,9 +47,20 @@ class ProductController extends Controller
         return view('admin.pages.products.edit', compact('id'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        dd('Cadastrando...');
+        // dd('Cadastrando...');
+        // dd($request->all());
+        // dd($request->only(['name', 'description']));
+        // dd($request->name);
+        // dd($request->input('teste', 'default'));
+        // dd($request->except('_token', 'name'));
+
+        if ($request->file('photo')->isValid()) {
+            // dd($request->file('photo')->store('products'));
+            $nameFile = $request->name . '.' . $request->photo->extension();
+            dd($request->file('photo')->storeAs('products', $nameFile));
+        }
     }
 
     public function update($id)
