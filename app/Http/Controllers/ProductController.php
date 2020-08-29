@@ -50,6 +50,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // dd('Cadastrando...');
+
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'description' => 'nullable|min:3|max:10000',
+            'photo' => 'required|image',
+        ]);
+
+        dd('OK');
+
         // dd($request->all());
         // dd($request->only(['name', 'description']));
         // dd($request->name);
