@@ -35,7 +35,13 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return "Exibindo o Produto de id: {$id}";
+        // $product = Product::where('id', $id)->first();
+        if (!$product = Product::find($id)) 
+            return redirect()->back();
+
+        return view('admin.pages.products.show', [
+            'product' => $product
+        ]);
     }
 
     public function create()
