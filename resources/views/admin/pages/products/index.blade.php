@@ -4,11 +4,11 @@
 
 @section('content')
     <h1>Exibindo os produtos</h1>
-    <a href="{{ route('products.create') }}">Cadastrar</a>
+    <a href="{{ route('products.create') }}" class="btn btn-primary">Cadastrar</a>
     
     <hr>
 
-    <table border="1">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
