@@ -63,8 +63,6 @@ class ProductController extends Controller
 
     public function store(StoreUpdateProductRequest $request)
     { 
-        dd('OK');
-
         /*
         $request->validate([
             'name' => 'required|min:3|max:255',
@@ -79,11 +77,17 @@ class ProductController extends Controller
         // dd($request->input('teste', 'default'));
         // dd($request->except('_token', 'name'));
 
-        if ($request->file('photo')->isValid()) {
+        /*if ($request->file('photo')->isValid()) {
             // dd($request->file('photo')->store('products'));
             $nameFile = $request->name . '.' . $request->photo->extension();
             dd($request->file('photo')->storeAs('products', $nameFile));
-        }
+        }*/
+
+        $data = $request->only('name', 'description', 'price');
+
+        Product::create($data);
+
+        return redirect()->route('products.index');
     }
 
     public function update($id)
