@@ -9,6 +9,8 @@ Route::get('/', function () {
 Route::get('/contato', function () {
     return view('contact');
 });
+// Filters
+Route::any('products/search', 'ProductController@search')->name('products.search');
 
 // Chamando o Controller ProductController com o método/ação index
 // ---------------------- CRUD com Laravel -------------------------------------------
