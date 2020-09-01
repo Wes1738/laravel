@@ -10,10 +10,10 @@ class ProductController extends Controller
 {
     protected $request, $user;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, Product $product)
     {
-        // dd($request->prm1);
         $this->request = $request;
+        $this->repository = $product;
 
         // $this->middleware('auth');
         // Estou bloqueando o acesso a essas rotas abaixo
@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function show($id)
     {
         // $product = Product::where('id', $id)->first();
-        if (!$product = Product::find($id)) 
+        if (!$product = $this->repository->find($id)) 
             return redirect()->back();
 
         return view('admin.pages.products.show', [
@@ -85,7 +85,7 @@ class ProductController extends Controller
 
         $data = $request->only('name', 'description', 'price');
 
-        Product::create($data);
+        $this->repository->create($data);
 
         return redirect()->route('products.index');
     }
@@ -97,6 +97,12 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        return "Deletando o produto: {$id}";
+        $product = $this->repository->where('id', $id)->first();
+        if (!$product)
+            return redirect()->back();
+
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }
