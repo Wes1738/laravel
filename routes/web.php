@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,7 +32,7 @@ Route::post('/store', 'ProductController@store')->name('products.store');
 Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
 */
 // ------------------------------ OU SIMPLESMENTE ----------------------------------------
-Route::resource('products', 'ProductController')->middleware('auth');
+Route::resource('products', 'ProductController')->middleware(['auth', 'check.is.admin']);
 
 // Login
 Route::get('/login', function () {
