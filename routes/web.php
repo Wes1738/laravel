@@ -10,7 +10,7 @@ Route::get('/contato', function () {
     return view('contact');
 });
 // Filters
-Route::any('products/search', 'ProductController@search')->name('products.search');
+Route::any('products/search', 'ProductController@search')->name('products.search')->middleware('auth');
 
 // Chamando o Controller ProductController com o método/ação index
 // ---------------------- CRUD com Laravel -------------------------------------------
@@ -31,7 +31,7 @@ Route::post('/store', 'ProductController@store')->name('products.store');
 Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
 */
 // ------------------------------ OU SIMPLESMENTE ----------------------------------------
-Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductController')->middleware('auth');
 
 // Login
 Route::get('/login', function () {
@@ -132,3 +132,9 @@ Route::group([
 });
 */
 
+
+Auth::routes();
+/* Caso eu queira desabilitar o Register
+Auth::routes(['register' => false]); */
+
+Route::get('/home', 'HomeController@index')->name('home');
